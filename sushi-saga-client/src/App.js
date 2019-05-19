@@ -4,6 +4,8 @@ import Table from "./containers/Table";
 
 // Endpoint!
 const API = "http://localhost:3001/sushis";
+//Array for rendering empty plates
+let foodArray = [];
 
 class App extends Component {
   state = {
@@ -34,6 +36,7 @@ class App extends Component {
       if (total >= 0 && total < 100) {
         event.target.remove();
         this.setState({ money: total });
+        foodArray.push(" ");
       }
     }
   };
@@ -50,7 +53,7 @@ class App extends Component {
           handleRandomSushis={this.handleRandomSushis}
           handleEaten={this.handleEaten}
         />
-        <Table handleEaten={this.handleEaten} money={this.state.money} />
+        <Table money={this.state.money} foodArray={foodArray} />
       </div>
     );
   }
