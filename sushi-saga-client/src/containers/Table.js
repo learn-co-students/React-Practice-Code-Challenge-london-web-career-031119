@@ -4,6 +4,7 @@ const Table = (props) => {
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
+      console.log(x)
       return <div className="empty-plate" style={{ top: -7 * index }}/>
     })
   }
@@ -16,11 +17,7 @@ const Table = (props) => {
       <div className="table">
         <div className="stack">
           {
-            /* 
-               renderPlates takes an array 
-               and renders an empty plate
-               for every element in the array
-            */
+  
             renderPlates([])
           }
         </div>
