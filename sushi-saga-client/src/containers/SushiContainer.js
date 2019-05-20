@@ -7,7 +7,10 @@ const SushiContainer = (props) => {
     <Fragment>
       <div className="belt">
         {props.sushis.map(sushi => (
-          < Sushi key={sushi.id} sushi={sushi} handleSushiEaten={props.handleSushiEaten}/>
+          <Sushi 
+            key={sushi.id} 
+            sushi={sushi} 
+            handleSushiEaten={props.handleSushiEaten}/>
         ))}
           <MoreButton handleRandomSushis={props.handleRandomSushis} />
       </div>

@@ -1,28 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
-class Sushi extends Component  {
+const Sushi = (props) =>  {
 
-  render() {
     return (
-      <div className="sushi">
-        <div className="plate" 
-            onClick={this.props.handleSushiEaten}>
+      <div className="sushi" onClick={props.handleSushiEaten}>
+        <div className="plate">
           { 
             // /* Tell me if this sushi has been eaten! */ 
-            this.props.sushi.eaten ?
+            props.sushi.eaten ?
               null
             :
-              <img id={this.props.sushi.id} src={this.props.sushi.img_url} width="100%" />
+              <img id={props.sushi.id} src={props.sushi.img_url} width="100%"  alt={props.sushi.name}/>
           }
         </div>
         <h4 className="sushi-details">
-          {this.props.sushi.name} - ${this.props.sushi.price}
+          {props.sushi.name} - ${props.sushi.price}
         </h4>
       </div>
     )
   }
   
-}
 
 export default Sushi

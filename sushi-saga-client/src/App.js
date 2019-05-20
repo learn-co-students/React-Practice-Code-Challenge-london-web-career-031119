@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     sushis: [],
     sushisToRender: [],
-    budget: 250
+    budget: 100, 
+    sushisEaten: []
 
   }
 
@@ -28,31 +29,28 @@ class App extends Component {
     let sushisToRender = this.state.sushis
       // shuffle array
       .sort(() => Math.random() - 0.5)
-      .slice(0, 4)
-    
+      .slice(0, 4) 
     this.setState({sushisToRender})
-
   }
 
   handleSushiEaten = (e) => {
-    const {sushis, budget} = this.state
+    const {sushis, budget, sushisEaten} = this.state
     const id = e.target.id;
-    // console.log(id);
     // find the sushi we have clicked
-    let sushiClicked = sushis.find(sushi => sushi.id == id)
+    let sushiSelected = sushis.find(sushi => sushi.id.toString() === id)
     // change its eaten property to true
-    sushiClicked.eaten = true 
+    sushiSelected.eaten = true 
     // create a copy of state.sushis
     const sushisCopy = [...sushis]
     // update the state.sushis to include modified sushi
-    this.setState({sushis: sushisCopy})
+    this.setState({sushis: sushisCopy, sushisEaten: [...sushisEaten, sushiSelected]})
     // update budget
-    budget > 0 ? this.setState({budget: budget - sushiClicked.price}) : alert("You don't have enough money!")
+    budget - sushiSelected.price < 0 ? alert("You don't have enough money!") : this.setState({budget: budget - sushiSelected.price}) 
     
   }
 
   render() {
-    const {sushisToRender, budget} = this.state
+    const {sushisToRender, budget, sushisEaten} = this.state
     return (
       <div className="app">
         <SushiContainer 
@@ -63,6 +61,7 @@ class App extends Component {
 
         <Table 
           budget={budget}
+          sushisEaten={sushisEaten}
         />
       </div>
     );

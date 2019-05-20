@@ -2,12 +2,10 @@ import React, { Fragment } from 'react'
 
 const Table = (props) => {
 
-  const renderPlates = (array) => {
-    return array.map((x, index) => {
-      console.log(x)
-      return <div className="empty-plate" style={{ top: -7 * index }}/>
-    })
-  }
+  const renderPlates = (array) => array.map((x, index) => {
+    return <div className="empty-plate" style={{ top: -7 * index }}/>
+
+  })  
 
   return (
     <Fragment>
@@ -17,8 +15,7 @@ const Table = (props) => {
       <div className="table">
         <div className="stack">
           {
-  
-            renderPlates([])
+            renderPlates(props.sushisEaten)
           }
         </div>
       </div>
