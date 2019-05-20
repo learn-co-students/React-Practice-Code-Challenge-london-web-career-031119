@@ -8,10 +8,23 @@ const Table = (props) => {
     })
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const amount = event.target[0].value
+    if (amount) {
+      props.addBudget(parseInt(amount, 10))
+      event.target.reset()
+    }
+  }
+
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        You have: ${ props.budget } remaining! 
+        <form style={{display: "inline"}} id="budget-increment" onSubmit={handleSubmit}>
+          <input type="number" id="more-budget" name="more-budget" />
+          <button type="submit">Add more!</button>
+        </form>
       </h1>
       <div className="table">
         <div className="stack">
@@ -21,7 +34,7 @@ const Table = (props) => {
                and renders an empty plate
                for every element in the array
             */
-            renderPlates([])
+            renderPlates(props.plates)
           }
         </div>
       </div>
