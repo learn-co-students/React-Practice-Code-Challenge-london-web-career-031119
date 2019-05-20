@@ -12,7 +12,7 @@ function Wallet(props) {
   return (
     <form className="wallet" onSubmit={handleSubmit}>
       <input type="number" name="cash" id="cash" value={cash} onChange={handleChange} />
-      <input type="submit" value="Add to Credit" />
+      <input type="submit" value="Add to Money" />
     </form>
   );
 };
