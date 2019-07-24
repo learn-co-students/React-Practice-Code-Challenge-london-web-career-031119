@@ -1,9 +1,7 @@
-import React from 'react'
-
-const MoreButton = (props) => {
-    return <button onClick={/* Fill me in! */ null}>
-            More sushi!
-          </button>
+import React from "react"
+// triggers the get4sushi method - Container imported in sushi container
+const MoreButton = props => {
+  return <button onClick={() => props.get4Sushi()}>More sushi!</button>
 }
 
 export default MoreButton
